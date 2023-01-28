@@ -1,5 +1,5 @@
-import { createContext } from "react"
+import { createContext } from "react";
 
-const NavigationControls = createContext() 
+const NavigationControls = createContext();
 
-export default NavigationControls
+export default NavigationControls;

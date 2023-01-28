@@ -1,9 +1,13 @@
 import Layout from "../components/Layout";
 import Head from "next/head";
 import { BsGlobe2 } from "react-icons/bs";
-
+// components
 import Inputpassword from "../components/Passwordinput";
+// styles
 import styles from "../styles/Login.module.css";
+// image
+import Logo from "../public/images/logo.png";
+import Image from "next/image";
 
 function Heading() {
   return (
@@ -27,7 +31,8 @@ function InputFeild({
       <label className={styles.label}>
         {label}
         <input
-          className=" h-[3rem] rounded-md outline-none p-4 "
+          autoComplete="off"
+          className=" h-[3rem] rounded-md outline-none p-4 bg-black  "
           type={type}
           placeholder={placeholder}
           name={name}
@@ -42,7 +47,7 @@ function Button() {
     <div className="h-full flex justify-center items-center  ">
       <button
         type="submit"
-        className="py-3 px-8 rounded-md bg-blue-600 text-white "
+        className=" transition-all  py-3 px-8 rounded-md text-[#ff9d00] border-2 border-[#ff9d00] hover:bg-[#ff9d00] hover:text-white "
       >
         Submit
       </button>
@@ -69,23 +74,28 @@ export default function Login() {
       </Head>
       <Layout>
         <div className={styles.mainLayout}>
-          <div className={styles.formBox}>
-            <Heading />
-            <form onSubmit={onSubmit} className="w-full h-full">
-              <div className="py-4 grid w-full h-full  ">
-                <InputFeild
-                  placeholder="Enter Email"
-                  label="Email"
-                  name="Email"
-                />
-                <Inputpassword
-                  placeholder="Enter Password"
-                  label="Password"
-                  name="Password"
-                />
-                <Button />
-              </div>
-            </form>
+          <div className="p-4 h-[10%]">
+            <Image src={Logo} />
+          </div>
+          <div className="h-[90%] flex justify-center items-center  ">
+            <div className={styles.formBox}>
+              <Heading />
+              <form onSubmit={onSubmit} className="w-full h-full">
+                <div className="py-4 grid w-full h-full  ">
+                  <InputFeild
+                    placeholder="Enter Email"
+                    label="Email"
+                    name="Email"
+                  />
+                  <Inputpassword
+                    placeholder="Enter Password"
+                    label="Password"
+                    name="Password"
+                  />
+                  <Button />
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </Layout>

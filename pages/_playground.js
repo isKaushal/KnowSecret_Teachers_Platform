@@ -1,4 +1,4 @@
-import Slider from "../components/MyCustomeSlider"
+import Slider from "../components/MyCustomeSlider";
 
 // images
 
@@ -22,11 +22,6 @@ const ImageList = [
   { src: img8, key: 8, alt: "Slider Images" },
 ];
 
-
-
-export default function MainSlider(){
-
-  return <Slider list={ImageList}  />
-
-
+export default function MainSlider() {
+  return <Slider list={ImageList} />;
 }

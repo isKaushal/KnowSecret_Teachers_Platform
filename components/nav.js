@@ -15,12 +15,32 @@ import NavigationControls from "../components/context";
 // style sheets
 
 // images
-import teacherPhoto from "../public/images/profileimage/download.jpg";
-import logo from "../public/images/profileimage/logo.png";
+import teacherPhoto from "../public/images/profilepage/download.jpg";
+import logo from "../public/images/profilepage/logo.png";
 
 // for demo
 
 // styles
+
+const NavIconsNameToggle = styled.div`
+  &:hover .nav-titles {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+
+  &:hover .navicons {
+    transform: translateY(-4px);
+  }
+
+  .nav-titles {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+
+  .navicons {
+    transform: translateY(-4px);
+  }
+`;
 
 const NavigationWrap = styled.div`
   .mainTransition {
@@ -32,6 +52,7 @@ const NavigationWrap = styled.div`
   }
 
   .nav-titles {
+    /* font-family: 'Solitreo', cursive; */
     transform: translateY(-4px);
     opacity: 0;
     transition: 0.3s ease-in-out;
@@ -52,16 +73,6 @@ const NavigationWrap = styled.div`
     transform: translateY(-4px);
   }
 
-  /* js className toggles */
-
-  .nav-titles-hover {
-    transition: 0.3s ease-in-out !important ;
-    transform: translateY(0px) !important;
-    opacity: 1 !important;
-  }
-
-  /* js className toggles */
-
   .user-email,
   .user-address > i {
     color: #ffc40080;
@@ -72,7 +83,7 @@ const NavigationWrap = styled.div`
   }
 `;
 
-export default function NavigationBar() {
+export default function NavigationBar({ profileDetails }) {
   // for access router
   const router = useRouter();
   // for access router
@@ -105,13 +116,12 @@ export default function NavigationBar() {
   const [navBehaviour, setnavBehaviour] = useState(false);
   // for set pc navigation Behaviour
 
-  // for collect data from href links
+  // for collect data from href links and changing page
   function CustomLink({ children, href, navBehaviourControl }) {
     if (router.asPath === href) {
       setGlobalnavBehaviour(navBehaviourControl);
       setnavBehaviour(navBehaviourControl);
     }
-
     const clickhandle = () => {
       setNavOpen(false);
     };
@@ -122,7 +132,7 @@ export default function NavigationBar() {
       </Link>
     );
   }
-  // for collect data from href links
+  // for collect data from href links and changing page
 
   return (
     <NavigationWrap className=" h-[10%] lg:h-full ">
@@ -252,13 +262,12 @@ export default function NavigationBar() {
       <div className="main-inner h-full justify-center items-center hidden lg:flex  ">
         {/* <!-- navigation bar --> */}
         <motion.div
-          // initial={{width:navigationWidth}}
           animate={
             navBehaviour ? { width: "5.5rem" } : { width: navigationWidth }
           }
           transition={{ delay: "0.5" }}
           id="navigation"
-          className=" bg-[#272727]     lg:w-[17rem] xl:w-[20rem]  lg:block lg:rounded-lg overflow-hidden lg:h-full "
+          className=" bg-[#272727]    lg:w-[17rem] xl:w-[20rem]  lg:block lg:rounded-lg overflow-hidden lg:h-full "
         >
           <motion.div
             initial={{ height: "65%" }}
@@ -269,12 +278,11 @@ export default function NavigationBar() {
             <div className="w-full grid justify-center items-center">
               <motion.div
                 transition={{ delay: "0.5" }}
-                initial={{ width: "11rem" }}
                 animate={
-                  navBehaviour ? { width: "4.5rem" } : { width: "11rem" }
+                  navBehaviour ? { width: "4.5rem" } : { width: "13rem" }
                 }
                 id="main-navigation-wrap"
-                className="nav-Image-wrap w-[11rem]  flex justify-center rounded-full overflow-hidden items-center"
+                className="nav-Image-wrap  w-[13rem]  flex justify-center rounded-full overflow-hidden items-center"
               >
                 <Image
                   className="nav-image w-full h-full"
@@ -330,36 +338,36 @@ export default function NavigationBar() {
                 navBehaviourControl={false}
                 href={`/${router.query.profileid}/profile/home`}
               >
-                <div
+                <NavIconsNameToggle
                   id="home"
-                  className="navigation-icons cursor-pointer gsap1 w-[100%] p-4 xl:p-[1.5rem] 2xl:p-4  flex flex-col justify-center items-center "
+                  className=" cursor-pointer gsap1 w-[100%] p-4  2xl:p-4  flex flex-col justify-center items-center "
                 >
                   <AiOutlineHome id="home" className="navicons" />
 
                   <small
                     id="hometitle"
-                    className="nav-titles text-[#b0b0b0] text-center mt-1 font-bold"
+                    className="nav-titles text-[#b0b0b0] text-center mt-1 font-bold font-[cursive]"
                   >
                     Home
                   </small>
-                </div>
+                </NavIconsNameToggle>
               </CustomLink>
               <CustomLink
                 navBehaviourControl={true}
                 href={`/${router.query.profileid}/profile/about`}
               >
-                <div
+                <NavIconsNameToggle
                   id="about"
-                  className="navigation-icons cursor-pointer gsap1 w-[100%] p-4 xl:p-[1.5rem] 2xl:p-4  flex flex-col justify-center items-center "
+                  className=" cursor-pointer gsap1 w-[100%] p-4  2xl:p-4  flex flex-col justify-center items-center "
                 >
                   <AiOutlineUser id="about" className="navicons" />
                   <small
                     id="usertitle"
-                    className="nav-titles text-[#b0b0b0] text-center mt-1 font-bold"
+                    className="nav-titles text-[#b0b0b0] text-center mt-1 font-bold font-[cursive]"
                   >
                     About
                   </small>
-                </div>
+                </NavIconsNameToggle>
               </CustomLink>
               <CustomLink
                 navBehaviourControl={true}
@@ -367,12 +375,12 @@ export default function NavigationBar() {
               >
                 <div
                   id="education"
-                  className="navigation-icons cursor-pointer gsap1 w-[100%] p-4 xl:p-[1.5rem] 2xl:p-4  flex flex-col justify-center items-center "
+                  className="navigation-icons cursor-pointer gsap1 w-[100%] p-4  2xl:p-4  flex flex-col justify-center items-center "
                 >
                   <HiOutlineAcademicCap id="education" className="navicons" />
                   <small
                     id="clipbordtitle"
-                    className="nav-titles text-[#b0b0b0] text-center mt-1 font-bold"
+                    className="nav-titles text-[#b0b0b0] text-center mt-1 font-bold font-[cursive]"
                   >
                     Education
                   </small>
@@ -394,10 +402,10 @@ export default function NavigationBar() {
               >
                 <div
                   id="experience"
-                  className="navigation-icons cursor-pointer gsap2 w-[100%] p-4 xl:p-[1.5rem] 2xl:p-4  flex flex-col justify-center items-center "
+                  className="navigation-icons cursor-pointer gsap2 w-[100%] p-4  2xl:p-4  flex flex-col justify-center items-center "
                 >
                   <SlNote id="experience" className="navicons" />
-                  <small className="nav-titles text-[#b0b0b0] text-center mt-1 font-bold">
+                  <small className="nav-titles text-[#b0b0b0] text-center mt-1 font-bold font-[cursive]">
                     Experience
                   </small>
                 </div>
@@ -408,9 +416,8 @@ export default function NavigationBar() {
               >
                 <div
                   id="testimonials"
-                  className="navigation-icons cursor-pointer gsap2 w-[100%] p-4 xl:p-[1.5rem] 2xl:p-4  flex flex-col justify-center items-center "
+                  className="navigation-icons cursor-pointer gsap2 w-[100%] p-4  2xl:p-4  flex flex-col justify-center items-center "
                 >
-                  {/* <FaQuoteLeft className="navicons" /> */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     id="testimonials"
@@ -427,7 +434,7 @@ export default function NavigationBar() {
                   </svg>
                   <small
                     id="openbooktitle"
-                    className="nav-titles text-[#b0b0b0] text-center mt-1 font-bold"
+                    className="nav-titles text-[#b0b0b0] text-center mt-1 font-bold font-[cursive]"
                   >
                     Testimonials
                   </small>
@@ -439,12 +446,12 @@ export default function NavigationBar() {
               >
                 <div
                   id="contact"
-                  className="navigation-icons cursor-pointer gsap2 w-[100%] p-4 xl:p-[1.5rem] 2xl:p-4 flex flex-col justify-center items-center "
+                  className="navigation-icons cursor-pointer gsap2 w-[100%] p-4  2xl:p-4 flex flex-col justify-center items-center "
                 >
                   <HiOutlineLocationMarker id="contact" className="navicons" />
                   <small
                     id="locationtitle"
-                    className="nav-titles text-[#b0b0b0] text-center mt-1 font-bold"
+                    className="nav-titles text-[#b0b0b0] text-center mt-1 font-bold font-[cursive]"
                   >
                     Contact
                   </small>

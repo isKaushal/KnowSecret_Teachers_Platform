@@ -6,23 +6,22 @@ import { motion } from "framer-motion";
 // components
 import NavigationControls from "./context";
 
-
-
 const AnimationClass = styled.div`
   width: 100%;
-  height: 100%; 
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   animation: PopUp 1s forwards;
 
-
   @keyframes PopUp {
     0% {
-      transform: scale(0.5); opacity: 0;
+      transform: scale(0.5);
+      opacity: 0;
     }
     100% {
-      transform: scale(1); opacity: 1;
+      transform: scale(1);
+      opacity: 1;
     }
   }
 `;
@@ -60,7 +59,6 @@ const CenterSection = styled.div`
     width: 62rem;
     background-color: #272727;
   }
-
 
   .second-image {
     transform: translateX(-2rem) translateY(2rem);
@@ -187,6 +185,36 @@ const CenterSection = styled.div`
         rgb(39, 39, 39)
       );
     }
+    .Experince-main::before {
+      content: "";
+      width: 1px;
+      left: 50%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      background: linear-gradient(
+        rgb(39, 39, 39),
+        rgb(255, 157, 0),
+        rgb(39, 39, 39)
+      );
+    }
+
+    .table-rows::after {
+      content: "";
+      width: 100%;
+      left: 50%;
+      top: 100%;
+      transform: translate(-50%);
+      height: 1px;
+      display: block;
+      position: absolute;
+      background: linear-gradient(
+        0.25turn,
+        rgb(39, 39, 39),
+        rgb(255, 157, 0),
+        rgb(39, 39, 39)
+      );
+    }
   }
 
   /*for education experince yellow lines*/
@@ -262,7 +290,7 @@ const CenterSection = styled.div`
 `;
 
 export default function CenterContent({ children }) {
-  const router = useRouter()
+  const router = useRouter();
   const { globalNavBehaviour, setGlobalnavBehaviour } =
     useContext(NavigationControls);
 
@@ -279,7 +307,7 @@ export default function CenterContent({ children }) {
     }
 
     if (resolution >= 1280) {
-      setCenterTileWidth("68rem");
+      setCenterTileWidth("66rem");
       setCenterTileAnimte("50rem");
     }
 
@@ -302,11 +330,9 @@ export default function CenterContent({ children }) {
       <motion.div
         animate={ExpendChecker ? centerAnimate : initialsState}
         transition={{ delay: "0.5" }}
-        className="lg:w-[38rem] xl:w-[50rem] 2xl:w-[61rem]    tiles-wrap center-tiles-wrap w-full lg:mx-4 h-[100%] lg:h-[100%] flex justify-center items-center relative"
+        className="lg:w-[38rem] xl:w-[50rem] 2xl:w-[61rem] tiles-wrap center-tiles-wrap w-full lg:mx-4 h-[100%] lg:h-[100%] flex justify-center items-center relative"
       >
-        <AnimationClass key={router.asPath} >
-          {children}
-          </AnimationClass>
+        <AnimationClass key={router.asPath}>{children}</AnimationClass>
       </motion.div>
     </CenterSection>
   );

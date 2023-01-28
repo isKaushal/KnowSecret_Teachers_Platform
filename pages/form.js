@@ -36,9 +36,6 @@ function InputCheck({
           id={id}
           onChange={onChange}
         />
-        <div className="hidden" id={id}>
-          <Image src={"CheckImage"} className={FormStyle.checkImage} />
-        </div>
       </label>
     </div>
   );
@@ -65,7 +62,7 @@ function FormHeader() {
             <Image src={LogoImage} alt="LOGO" />
           </div>
         </div>
-        <h3 className="text-center text-[28px] text-4xl text-white pb-[5rem] font-[poppins,Source Sans Pro]   ">
+        <h3 className="text-center text-[28px] text-4xl text-white pb-[5rem] font-[poppins,Source Sans Pro]">
           Hello Evaluator ! Welcome To TesnTrack
         </h3>
       </div>
@@ -74,6 +71,7 @@ function FormHeader() {
 }
 
 function Generaldetails() {
+  const [typechanger, settypechanger] = useState("text");
   const [getImage, setgetImage] = useState("");
   const [imgError, setimsgError] = useState(FormStyle.imageErrorMsgHide);
 
@@ -109,7 +107,7 @@ function Generaldetails() {
   const generalDatalist = {
     Userhandle: "",
     Username: "",
-    Date: "",
+    Dob: "",
     Address: "",
     Pincode: "",
     Email: "",
@@ -129,7 +127,7 @@ function Generaldetails() {
     <Saction>
       <h2 className=" p-4 text-white pb-0">Select your image:-</h2>
       <h5 className=" p-4 text-white h3 text-sm pt-0 ">
-        only JPG formate and 500 x 500 Size:-
+        Recommended Size 500 x 500 Size:-
       </h5>
       <div className="">
         <Input
@@ -166,11 +164,12 @@ function Generaldetails() {
 
         <Input
           required
-          name="Date"
+          name="Dob"
           id=""
+          onFocus={() => settypechanger("date")}
           onChange={catchData}
-          type="date"
-          placeholder="Your name*"
+          type={typechanger}
+          placeholder="Date Of Birth*"
         />
       </div>
       <div className="h-[7rem] md:flex md:h-[3.5rem] lg:flex lg:h-[3.5rem] justify-center items-center w-full">

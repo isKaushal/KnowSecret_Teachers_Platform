@@ -1,7 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-// slider 
-import Slider from "../../components/MyCustomeSlider"
+// slider
+import Slider from "../../components/MyCustomeSlider";
 
 // icons
 import { FaMusic, FaPlaneDeparture } from "react-icons/fa";
@@ -10,8 +12,7 @@ import { RiBookMarkFill } from "react-icons/ri";
 import { IoFootballSharp } from "react-icons/io5";
 
 // images
-import profileimg from "../../public/images/profileimage/download.jpg";
-
+import profileimg from "../../public/images/profilepage/download.jpg";
 
 // demo list
 
@@ -35,18 +36,16 @@ const ImageList = [
   { src: img8, key: 8, alt: "Slider Images" },
 ];
 
-
-
-
 export default function About() {
+  const router = useRouter();
   return (
     <div className="  bg-[#272727] h-full w-full   rounded-lg p-7 pr-4 col-span-7 overflow-hidden absolute">
       <div className="main-tile2-content-wrap w-full h-full  overflow-y-scroll">
-        <saction className=" grid lg:flex">
+        <div className=" grid lg:flex">
           <div className=" w-full lg:w-2/5 col-span-1 lg:h-5/6 grid justify-center items-center">
-            <div className="border-2 border-[#ff9d00] w-44 lg:w-64 rounded-t-3xl rounded-bl-3xl lg:mt-32">
+            <div className="border-2 border-[#ff9d00] w-44 lg:w-56 xl:w-64  rounded-t-3xl rounded-bl-3xl lg:mt-32">
               <Image
-                style={{width:"100%", height:"100%"}}
+                style={{ width: "100%", height: "100%" }}
                 className="second-image lg:w-96 rounded-t-3xl rounded-bl-3xl"
                 src={profileimg}
                 alt=""
@@ -59,15 +58,11 @@ export default function About() {
               <br />
               thinking and craft.
             </h1>
-            <p className="text-white text-md my-5">
+            <p className="text-white text-md my-5 pr-14  ">
               I’m a web designer who aware of the tiny moments in a persons life
-              that reveal
-              <br />
-              greater truths. Aliquam erat volutpat. Nullam imperdiet sapien
-              felis, <br />
-              non lobortis odio mattis in. Quisque dapibus aliquet dictum.
-              <br />
-              Integer dapibus ullamcorper est, ac .
+              that reveal greater truths. Aliquam erat volutpat. Nullam
+              imperdiet sapien felis, non lobortis odio mattis in. Quisque
+              dapibus aliquet dictum. Integer dapibus ullamcorper est, ac .
             </p>
             <div className="grid lg:grid-cols-2 text-white">
               <ul className="list-item lg:col-span-1 ">
@@ -81,7 +76,6 @@ export default function About() {
                   Pin code:- <small>Pin </small>
                 </li>
               </ul>
-
               <ul className="list-item lg:col-span-1 ">
                 <li>
                   Email Id:- <small>Email</small>
@@ -92,15 +86,17 @@ export default function About() {
               </ul>
             </div>
 
-            <button
-              id="GET-HIRED"
-              className="button px-8 py-3 rounded-full my-5 text-white bg-[#ff9d00]  text-xl"
-            >
-              Get Hired
-            </button>
+            <Link href={`/${router.query.profileid}/profile/contact`}>
+              <button
+                id="GET-HIRED"
+                className="button px-8 py-3 rounded-full my-5 text-white bg-[#ff9d00]  text-xl"
+              >
+                Get Hired
+              </button>
+            </Link>
           </div>
-        </saction>
-        <saction className=" relative">
+        </div>
+        <div className=" relative">
           <div className="hobbies-wrap w-full lg:h-36 grid grid-cols-2  lg:flex justify-evenly">
             <div className="hobbies w-full h-36 grid col-span-1 justify-center items-center py-6">
               <div className="flex justify-center items-center text-[#ff9d00]   ">
@@ -133,8 +129,8 @@ export default function About() {
               <h1 className="text-white text-xl">Rading</h1>
             </div>
           </div>
-        </saction>
-        <saction className="skills grid lg:grid-cols-2 lg:h-72 w-full">
+        </div>
+        <div className="skills grid lg:grid-cols-2 lg:h-72 w-full">
           <div className="w-full col-span-1 py-10 px-3">
             <h1 className="text-white text-4xl lg:text-2xl">
               I have been able to experience & <br />
@@ -148,7 +144,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="lg:h-full w-full col-span-1 p-5 lg:p-10">
+          <div className="lg:h-full w-full col-span-1 p-5 lg:p-10  ">
             <ul className="text-white flex items-center text-xl my-2">
               <li>Computer :- ⭐⭐⭐⭐⭐</li>
             </ul>
@@ -165,15 +161,10 @@ export default function About() {
               <li>Others :- ⭐⭐⭐⭐⭐</li>
             </ul>
           </div>
-        </saction>
-        <saction
-          id="relode"
-          className="w-full h-[15rem] lg:h-[20rem] flex justify-center items-center overflow-hidden"
-        >
-          <div className="slider-wrap w-full lg:w-[35rem] h-full flex justify-center items-center">
-            <Slider list={ImageList}  />
-          </div>
-        </saction>
+        </div>
+        <div className="  w-full flex justify-center items-center">
+          <Slider list={ImageList} />
+        </div>
       </div>
     </div>
   );
