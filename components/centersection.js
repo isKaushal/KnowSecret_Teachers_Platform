@@ -236,9 +236,6 @@ const CenterSection = styled.div`
     color: white;
   }
 
-  @media screen and (min-width: 1024px) {
-  }
-
   /* main tile no4 */
   /* main tile no4 End */
   /* main tile no5 Start */
@@ -250,39 +247,77 @@ const CenterSection = styled.div`
     background-color: #272727;
   }
 
-  .Testimonials-heading::after {
-    content: "";
-    width: 50%;
-    height: 1px;
-    margin-top: 0.5rem;
-    display: block;
-    background: linear-gradient(0.25turn, rgb(255, 157, 0) 0%, rgb(39, 39, 39));
+  .Testimonials-heading {
+    width: 100%;
+
+    &::after{
+      content: "";
+      width: 50%;
+      display: inline;
+      box-shadow: 1px 1px 10px;
+      background: linear-gradient(
+          0.25turn,
+          rgb(39, 39, 39),
+          rgb(255, 157, 0),
+          rgb(39, 39, 39)
+        );
+    }
   }
 
-  .Testimonials-cards {
-    /*demo width margin*/
-    margin: 0rem 1rem;
-    width: 50%;
-    /*demo width margin*/
-    background-color: #272727;
-    box-shadow: 1px 1px 10px;
+  .Testimonials-cards{
 
-    ::before {
+    box-shadow: 0px 0px 5px;
+
+    &::before {
       content: "";
+      left: 0;
+      top: 80%;
       width: 10rem;
       height: 28rem;
-      transform: translate(-50%, -50%) rotate(340deg);
       display: block;
-      background-color: #ffffff14;
       position: absolute;
-      top: 80%;
-      left: 0;
+      background-color:#ffffff0d;
+      transform: translate(-50%, -50%) rotate(340deg);
+      z-index: -10;
     }
+
   }
 
   .icons-name-wrap > i {
     color: #ff9d00;
     font-size: 2rem;
+  }
+
+  .owl-carousel .owl-stage {
+    padding: 5% 0rem 2% 0rem;
+  }
+
+  .owl-carousel .owl-nav button.owl-prev,
+  .owl-carousel .owl-nav button.owl-next {
+    color: #ff9d00;
+    padding: 0;
+    line-height: 0rem;
+    margin: 0rem 1rem;
+    font-size: 50px;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  @media screen and (min-width: 1024) {
+    .owl-carousel .owl-nav button.owl-prev,
+    .owl-carousel .owl-nav button.owl-next {
+      color: #ff9d00;
+      padding: 0;
+      line-height: 3rem;
+      margin: 0rem 5rem;
+      font-size: 100px;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
   }
 
   /* main tile no5 */

@@ -1,6 +1,9 @@
 import Layout from "../components/Layout";
 import Head from "next/head";
 import { BsGlobe2 } from "react-icons/bs";
+import { signIn } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 // components
 import Inputpassword from "../components/Passwordinput";
 // styles
@@ -8,6 +11,7 @@ import styles from "../styles/Login.module.css";
 // image
 import Logo from "../public/images/logo.png";
 import Image from "next/image";
+import { useEffect } from "react";
 
 function Heading() {
   return (
@@ -25,17 +29,18 @@ function InputFeild({
   placeholder = "Enter Here",
   label = "",
   name = "",
+  ...rest
 }) {
   return (
     <div className="w-full grid">
       <label className={styles.label}>
         {label}
         <input
-          autoComplete="off"
           className=" h-[3rem] rounded-md outline-none p-4 bg-black  "
           type={type}
           placeholder={placeholder}
           name={name}
+          {...rest}
         />
       </label>
     </div>
@@ -55,17 +60,30 @@ function Button() {
   );
 }
 
-function onSubmit(event) {
+const onSubmit = async (event) => {
   event.preventDefault();
 
   const form = event.currentTarget;
   let formData = new FormData(form);
   formData = Object.fromEntries([...formData.entries()]);
 
-  console.log(formData);
+  const req = await signIn("credentials", {
+    email: formData.Email,
+    password: formData.Password,
+    redirect: false,
+  });
+
+  console.log(req);
 }
 
 export default function Login() {
+  const session = useSession();
+  const Router = useRouter();
+  console.log(session);
+  if (session.status === "authenticated") {
+  Router.push("/admin");
+  }
+
   return (
     <>
       <Head>
@@ -75,7 +93,7 @@ export default function Login() {
       <Layout>
         <div className={styles.mainLayout}>
           <div className="p-4 h-[10%]">
-            <Image src={Logo} />
+            <Image src={Logo} alt="Logo " />
           </div>
           <div className="h-[90%] flex justify-center items-center  ">
             <div className={styles.formBox}>

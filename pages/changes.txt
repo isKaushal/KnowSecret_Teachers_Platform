@@ -1,6 +1,10 @@
 add catagories
 add faculty option :{principal:{institute name}, teacher:{subject name}}
-
+add location 
+add experince in numbers
+add star rating in personal skills
 replace skills to work shops:{name, place}
+
+
 
 

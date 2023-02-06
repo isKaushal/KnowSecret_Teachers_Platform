@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Img from "../../../public/images/profilepage/download.jpg";
 
 // components
 import Home from "../../../components/profile/home";
@@ -122,19 +123,23 @@ const firstdata = {
   ],
   testimonials: [
     {
-      studentname: "shikha khandal",
+      image: Img,
+      studentname: "kaushal kumar soni",
       studentclass: "10",
     },
     {
-      studentname: "shikha khandal",
+      image: Img,
+      studentname: "kaushal kumar soni",
       studentclass: "11",
     },
     {
-      studentname: "shikha khandal",
+      image: Img,
+      studentname: "kaushal kumar soni",
       studentclass: "12",
     },
     {
-      studentname: "shikha khandal",
+      image: Img,
+      studentname: "kaushal kumar soni",
       studentclass: "13",
     },
   ],
@@ -267,7 +272,7 @@ const seconddata = {
   ],
 };
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   return { props: { profileDetails: firstdata } };
 }
 

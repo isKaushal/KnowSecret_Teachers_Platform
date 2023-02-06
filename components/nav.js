@@ -90,15 +90,24 @@ export default function NavigationBar({ profileDetails }) {
 
   // for set navigation default width
   const [navigationWidth, setnavigationWidth] = useState(false);
+  const [navigationButtonsPadding, setNavigationButtonsPadding ] = useState();
   useEffect(() => {
-    const resolution = window.innerWidth;
-    console.log(resolution);
-    if (resolution >= 1024) {
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+
+    if (windowWidth >= 1024) {
       setnavigationWidth("17rem");
     }
-
-    if (resolution >= 1280) {
+    if (windowWidth >= 1280) {
       setnavigationWidth("20rem");
+    }
+
+    //////////////////////// Window Height
+
+    if (windowHeight < 629) {
+      setNavigationButtonsPadding("0.5rem");
+    } else {
+      setNavigationButtonsPadding("0.9rem");
     }
   });
   // for set navigation default width
@@ -304,18 +313,18 @@ export default function NavigationBar({ profileDetails }) {
                 id="navigation-name"
                 className="na-name w-full text-white text-center text-2xl xl:text-3xl overflow-hidden"
               >
-                Kaushal Kumar Soni
+                {profileDetails.username}
               </h1>
               <div
                 id="DownloadCV-button-wrap"
                 className=" w-full grid justify-center items-center overflow-hidden"
               >
-                <button
-                  id="navigation-button"
-                  className="button bg-[#ff9d00]  rounded-full w-44 h-14 text-white text-xl"
-                >
-                  Download CV
-                </button>
+                  <button
+                    id="navigation-button"
+                    className="button bg-[#ff9d00]  rounded-full w-44 h-14 text-white text-xl"
+                  >
+                    Download CV
+                  </button>
               </div>
             </motion.div>
           </motion.div>
@@ -340,7 +349,8 @@ export default function NavigationBar({ profileDetails }) {
               >
                 <NavIconsNameToggle
                   id="home"
-                  className=" cursor-pointer gsap1 w-[100%] p-4  2xl:p-4  flex flex-col justify-center items-center "
+                  style={{padding:navigationButtonsPadding}}
+                  className=" cursor-pointer gsap1 w-[100%] flex flex-col justify-center items-center "
                 >
                   <AiOutlineHome id="home" className="navicons" />
 
@@ -358,7 +368,8 @@ export default function NavigationBar({ profileDetails }) {
               >
                 <NavIconsNameToggle
                   id="about"
-                  className=" cursor-pointer gsap1 w-[100%] p-4  2xl:p-4  flex flex-col justify-center items-center "
+                  style={{padding:navigationButtonsPadding}}
+                  className=" cursor-pointer gsap1 w-[100%] flex flex-col justify-center items-center "
                 >
                   <AiOutlineUser id="about" className="navicons" />
                   <small
@@ -375,7 +386,8 @@ export default function NavigationBar({ profileDetails }) {
               >
                 <div
                   id="education"
-                  className="navigation-icons cursor-pointer gsap1 w-[100%] p-4  2xl:p-4  flex flex-col justify-center items-center "
+                  style={{padding:navigationButtonsPadding}}
+                  className="navigation-icons cursor-pointer gsap1 w-[100%] flex flex-col justify-center items-center "
                 >
                   <HiOutlineAcademicCap id="education" className="navicons" />
                   <small
@@ -402,7 +414,8 @@ export default function NavigationBar({ profileDetails }) {
               >
                 <div
                   id="experience"
-                  className="navigation-icons cursor-pointer gsap2 w-[100%] p-4  2xl:p-4  flex flex-col justify-center items-center "
+                  style={{padding:navigationButtonsPadding}}
+                  className="navigation-icons cursor-pointer gsap2 w-[100%] flex flex-col justify-center items-center "
                 >
                   <SlNote id="experience" className="navicons" />
                   <small className="nav-titles text-[#b0b0b0] text-center mt-1 font-bold font-[cursive]">
@@ -416,7 +429,8 @@ export default function NavigationBar({ profileDetails }) {
               >
                 <div
                   id="testimonials"
-                  className="navigation-icons cursor-pointer gsap2 w-[100%] p-4  2xl:p-4  flex flex-col justify-center items-center "
+                  style={{padding:navigationButtonsPadding}}
+                  className="navigation-icons cursor-pointer gsap2 w-[100%] flex flex-col justify-center items-center "
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -446,7 +460,8 @@ export default function NavigationBar({ profileDetails }) {
               >
                 <div
                   id="contact"
-                  className="navigation-icons cursor-pointer gsap2 w-[100%] p-4  2xl:p-4 flex flex-col justify-center items-center "
+                  style={{padding:navigationButtonsPadding}}
+                  className="navigation-icons cursor-pointer gsap2 w-[100%] flex flex-col justify-center items-center "
                 >
                   <HiOutlineLocationMarker id="contact" className="navicons" />
                   <small

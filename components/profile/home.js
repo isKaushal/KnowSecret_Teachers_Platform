@@ -25,7 +25,7 @@ export default function Home({ profileDetails }) {
             Hello , I’m
             <span className="main-name text-xl md:text-2xl xl:text-3xl text-[#ff9d00] ">
               {" "}
-              Kaushal Kumar Soni
+              {profileDetails.username}
             </span>
           </h1>
           <h1 className="welcome-text text-white text-center text-xl lg:text-left md:text-2xl">

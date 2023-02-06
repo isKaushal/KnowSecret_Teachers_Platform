@@ -127,7 +127,7 @@ function Generaldetails() {
     <Saction>
       <h2 className=" p-4 text-white pb-0">Select your image:-</h2>
       <h5 className=" p-4 text-white h3 text-sm pt-0 ">
-        Recommended Size 500 x 500 Size:-
+        Please Note Image Size Should Be Less Than 100kb And Dimensions Are 500 By 500
       </h5>
       <div className="">
         <Input

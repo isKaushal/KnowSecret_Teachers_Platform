@@ -1,5 +1,4 @@
-import styles from "../styles/Common.module.css";
 
-export default function Saction({ children }) {
-  return <div className={styles.section}>{children}</div>;
+export default function Saction({ children, className }) {
+  return <div className={`${className} py-8 overflow-hidden `}>{children}</div>;
 }

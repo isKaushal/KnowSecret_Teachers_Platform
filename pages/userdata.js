@@ -2,6 +2,10 @@ import Image from "next/image";
 import Img from "../public/images/profilepage/download.jpg";
 import styled from "styled-components";
 
+// components
+import Saction from "../components/Saction"
+
+
 const firstdata = {
   image: "image",
   username: "Kaushal Kumar Soni ",
@@ -140,12 +144,12 @@ const InnerRows = styled.div`
 export default function UserData() {
   return (
     <div>
-      <div>
+      <Saction>
         <h1 className="text-center text-4xl p-4 text-[#ff9d00] ">
           Secret Data !!!!!!!!!!!!
         </h1>
-      </div>
-      <div className="mx-auto mt-[5rem] rounded-xl flex  bg-gray-300 w-[95%] h-[30rem]  ">
+      </Saction>
+      <Saction className="mx-auto mt-[5rem] rounded-xl flex  bg-gray-300 w-[95%] h-[30rem]  ">
         <div className="w-[50%] h-full  flex justify-center items-center  ">
           <Image
             width={200}
@@ -159,7 +163,7 @@ export default function UserData() {
           <h1 className="text-2xl uppercase font-medium   ">
             {firstdata.username}
           </h1>
-          <h3 className="text-lg uppercase font-medium   ">
+          <h3 className="text-md uppercase font-medium   ">
             faculty of {firstdata.faculty}
           </h3>
 
@@ -183,8 +187,8 @@ export default function UserData() {
             <span className="text-[#ff9d00]">{firstdata.hobbies}</span>
           </h3>
         </div>
-      </div>
-      <div className="mx-auto mt-[1rem] rounded-xl bg-gray-300 w-[95%] p-4 flex flex-col items-center  ">
+      </Saction>
+      <Saction className="mx-auto rounded-xl bg-gray-300 w-[95%] flex flex-col items-center  ">
         <InnerRows className="flex w-[50%] justify-evenly h-[3rem]  my-3 items-center p-4 rounded-lg bg-red-300  ">
           <div>Workshop Name</div>
           <div>Workshop Place</div>
@@ -197,8 +201,8 @@ export default function UserData() {
             </InnerRows>
           );
         })}
-      </div>
-      <div className="mx-auto mt-[1rem] rounded-xl bg-gray-300 w-[95%] p-4 flex flex-col items-center  ">
+      </Saction>
+      <Saction className="mx-auto rounded-xl bg-gray-300 w-[95%] flex flex-col items-center  ">
         <InnerRows className="flex w-[50%] justify-between px-[8rem]  h-[3rem]  my-3 items-center p-4 rounded-lg bg-red-300  ">
           <div>Year</div>
           <div>University</div>
@@ -213,8 +217,8 @@ export default function UserData() {
             </InnerRows>
           );
         })}
-      </div>
-      <div className="mx-auto mt-[1rem] rounded-xl bg-gray-300 w-[95%] p-4 flex flex-col items-center  ">
+      </Saction>
+      <Saction className="mx-auto rounded-xl bg-gray-300 w-[95%] flex flex-col items-center  ">
         <InnerRows className="flex w-[50%] justify-between px-[8rem]  h-[3rem]  my-3 items-center p-4 rounded-lg bg-red-300  ">
           <div>Year</div>
           <div>Organization</div>
@@ -231,8 +235,8 @@ export default function UserData() {
             </InnerRows>
           );
         })}
-      </div>
-      <div className="mx-auto mt-[1rem] rounded-xl bg-gray-300 w-[95%] p-4 grid grid-cols-4 ">
+      </Saction>
+      <Saction className="mx-auto rounded-xl bg-gray-300 w-[95%] grid grid-cols-4 ">
         {firstdata.testimonials.map((data) => {
           return (
             <div className="flex  justify-between h-[5rem] col-span-1  m-3 items-center p-4 rounded-lg bg-white  ">
@@ -247,7 +251,7 @@ export default function UserData() {
             </div>
           );
         })}
-      </div>
+      </Saction>
     </div>
   );
 }
